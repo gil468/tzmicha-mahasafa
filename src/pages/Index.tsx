@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -129,13 +128,13 @@ const Index = () => {
 
       if (response.ok) {
         toast({
-          title: (
+          title: "תודה על הפנייה!",
+          description: (
             <div className="flex items-center gap-2 text-right">
               <CheckIcon className="w-5 h-5 text-green-600" />
-              <span>תודה על הפנייה!</span>
+              <span>ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ המקצועית</span>
             </div>
           ),
-          description: "ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ המקצועית",
           className: "bg-green-50 border-green-200 text-green-800 text-right",
         });
         setFormData({ name: "", phone: "", email: "", message: "" });
@@ -145,13 +144,13 @@ const Index = () => {
       }
     } catch (error) {
       toast({
-        title: (
+        title: "שגיאה",
+        description: (
           <div className="flex items-center gap-2 text-right">
             <XIcon className="w-5 h-5 text-red-600" />
-            <span>שגיאה</span>
+            <span>אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.</span>
           </div>
         ),
-        description: "אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.",
         variant: "destructive",
         className: "text-right",
       });
