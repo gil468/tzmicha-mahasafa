@@ -1,0 +1,21 @@
+# Block .env access
+
+<FilesMatch "^\.env">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Block composer files
+
+<FilesMatch "(composer\.json|composer\.lock|package\.json)">
+Order allow,deny
+Deny from all
+</FilesMatch>
+
+# Disable directory listing
+
+Options -Indexes
+
+# Optional: Custom 404 page (if you have one)
+
+# ErrorDocument 404 /404.html
