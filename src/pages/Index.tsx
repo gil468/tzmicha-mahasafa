@@ -1,40 +1,35 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { LeadForm } from "@/models/LeadForm";
+import { validateFormData } from "@/services/formValidation";
 import {
-  CheckCircle,
-  Users,
-  Star,
-  Phone,
-  Mail,
-  MessageCircle,
   Award,
-  TrendingUp,
-  Shield,
-  Check,
+  CheckCircle,
   CheckIcon,
+  Mail,
+  Phone,
+  Shield,
+  Star,
+  TrendingUp,
   XIcon,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const defaultFormData = new LeadForm();
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState(defaultFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [whatsappOpacity, setWhatsappOpacity] = useState(1);
-  const [formErrors, setFormErrors] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: "",
-  });
+  const [formErrors, setFormErrors] = useState(defaultFormData);
+  const footerPhoneNumber = import.meta.env.VITE_FOOTER_PHONE_NUMBER;
+  const footerEmail = import.meta.env.VITE_FOOTER_EMAIL;
+  const facebookPageName = import.meta.env.VITE_FACEBOOK_PAGE_NAME;
+  const instagramPageName = import.meta.env.VITE_INSTAGRAM_PAGE_NAME;
+  const tiktokPageName = import.meta.env.VITE_TIKTOK_PAGE_NAME;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,54 +46,7 @@ const Index = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const validateForm = () => {
-    const errors = {
-      name: "",
-      phone: "",
-      email: "",
-      message: "",
-    };
-
-    if (!formData.name.trim()) {
-      errors.name = "שם מלא הוא שדה חובה";
-    } else if (formData.name.trim().length < 2) {
-      errors.name = "שם מלא חייב להכיל לפחות 2 תווים";
-    }
-
-    // Enhanced phone validation - numeric only and 9-10 digits
-    if (!formData.phone.trim()) {
-      errors.phone = "מספר טלפון הוא שדה חובה";
-    } else {
-      const numericPhone = formData.phone.replace(/\D/g, "");
-      if (numericPhone.length < 9 || numericPhone.length > 10) {
-        errors.phone = "מספר טלפון חייב להכיל 9-10 ספרות";
-      } else if (!/^\d{9,10}$/.test(numericPhone)) {
-        errors.phone = "מספר טלפון יכול להכיל ספרות בלבד";
-      }
-    }
-
-    // Enhanced email validation
-    if (!formData.email.trim()) {
-      errors.email = "כתובת דוא״ל היא שדה חובה";
-    } else {
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(formData.email)) {
-        errors.email = "כתובת דוא״ל לא תקינה";
-      }
-    }
-
-    if (!formData.message.trim()) {
-      errors.message = "תיאור המצב הוא שדה חובה";
-    } else if (formData.message.trim().length < 10) {
-      errors.message = "אנא ספרו לנו יותר על המצב שלכם (לפחות 10 תווים)";
-    }
-
-    setFormErrors(errors);
-    return !Object.values(errors).some((error) => error);
-  };
-
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Allow only numeric characters and basic formatting
     const value = e.target.value.replace(/[^\d\-\s]/g, "");
     setFormData({ ...formData, phone: value });
   };
@@ -106,9 +54,9 @@ const Index = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
+    const { errors, isValid } = validateFormData(formData);
+    setFormErrors(errors);
+    if (!isValid) return;
 
     setIsSubmitting(true);
 
@@ -132,22 +80,22 @@ const Index = () => {
           description: (
             <div className="flex items-center gap-2 text-right">
               <CheckIcon className="w-5 h-5 text-green-600" />
-              <span>ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ המקצועית</span>
+              <span>ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ</span>
             </div>
           ),
           className: "bg-green-50 border-green-200 text-green-800 text-right",
         });
-        setFormData({ name: "", phone: "", email: "", message: "" });
-        setFormErrors({ name: "", phone: "", email: "", message: "" });
+        setFormData(defaultFormData);
+        setFormErrors(defaultFormData);
       } else {
         throw new Error("Network response was not ok");
       }
     } catch (error) {
       toast({
-        title: "שגיאה",
+        title: "שגיאה בשליחת הטופס",
         description: (
           <div className="flex items-center gap-2 text-right">
-            <XIcon className="w-5 h-5 text-red-600" />
+            <XIcon className="w-5 h-5 text-red-200" />
             <span>אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.</span>
           </div>
         ),
@@ -160,7 +108,7 @@ const Index = () => {
   };
 
   const openWhatsApp = () => {
-    const phoneNumber = "972544308998";
+    const phoneNumber = import.meta.env.VITE_WHATSAPP_PHONE_NUMBER;
     const message = "שלום, אני מעוניין לקבל ייעוץ פיננסי מקצועי";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
@@ -174,21 +122,17 @@ const Index = () => {
     "כלים פרקטיים לחיסכון חודשי",
     "הדרכה לניהול חובות ויציאה מהמינוס",
     "מעקב והכוונה רציפה עד להשגת היעדים",
-    "אפשרות לייעוץ ב-zoom",
+    "ליווי אישי לאורך כל הדרך",
   ];
 
-  const testimonials = [
+  const recommendations = [
     {
       name: "שרה כהן",
       text: "תוך 3 חודשים הצלחנו לחסוך 2,000 ש״ח בחודש ולצאת מהמינוס. הייעוץ שינה לנו את החיים!",
     },
     {
       name: "דוד לוי",
-      text: "סוף סוף יש לנו שליטה על התקציב. המערכת פשוטה וקלה ליישום, ממליץ בחום!",
-    },
-    {
-      name: "רחל גולדשטיין",
-      text: "הכי חשוב שהבנו איך לתעדף הוצאות. היום אנחנו חוסכים לחופשה הראשונה שלנו!",
+      text: "סוף סוף יש לנו שליטה על התקציב. בעזרת הייעוץ המקצועי והאישי של לירן, ממליץ בחום!",
     },
   ];
 
@@ -204,38 +148,31 @@ const Index = () => {
           <div className="flex justify-center mb-8 animate-scale-in">
             <img
               src="/assets/web-logo.png"
-              alt="צמיחה מהספה יועצת פיננסית"
+              alt="צמיחה מהספה"
               className="w-32 h-32 object-contain hover-scale"
             />
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold text-emerald-900 mb-4 leading-tight">
-            לירן אהרון - יועצת פיננסית לכלכלת המשפחה
+          <h1 className="text-4xl md:text-5xl font-bold text-emerald-900 mb-4 leading-tight">
+            לירן אהרון - יועץ פיננסי לכלכלת המשפחה
           </h1>
 
-          <h2 className="text-3xl md:text-5xl font-bold text-green-800 mb-6 leading-tight">
-            רוצים לצאת מהמינוס
-            <br />
+          <h2 className="text-3xl md:text-4xl font-bold text-green-800 mb-6 leading-tight">
+            רוצים לצאת מהמינוס&nbsp;
             <span className="text-teal-700">אחת ולתמיד?</span>
           </h2>
 
-          <p className="text-xl md:text-2xl text-emerald-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-            צאו למסע של שליטה כלכלית וחיסכון חכם
+          <p className="text-xl md:text-3xl text-emerald-700 mb-8 max-w-3xl mx-auto leading-relaxed">
+            צאו למסע של&nbsp;
+            <span className="text-amber-500/90">צמיחה כלכלית</span>
           </p>
-
-          <div className="flex items-center justify-center gap-2 mb-8 text-green-700 animate-fade-in">
-            <Users className="w-6 h-6" />
-            <span className="text-lg font-semibold">
-              מעל 100 משפחות כבר שיפרו את מצבם הכלכלי איתנו
-            </span>
-          </div>
 
           <Button
             size="lg"
             className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover-scale"
             onClick={() =>
               document
-                .getElementById("contact-form")
+                .getElementById("leads-form")
                 ?.scrollIntoView({ behavior: "smooth" })
             }
           >
@@ -249,27 +186,29 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-6">
-              מי אני ומה אני מציעה
+              מי אני ומה אני מציע
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center animate-fade-in">
             <div>
               <h3 className="text-2xl font-bold text-emerald-900 mb-4">
-                לירן אהרון - יועצת פיננסית מוסמכת
+                לירן אהרון - יועץ פיננסי מוסמך
               </h3>
               <p className="text-green-700 text-lg leading-relaxed mb-6">
-                יועצת פיננסית עם תעודת הסמכה, בעלת ניסיון של מעל 5 שנים בתחום
-                הייעוץ הפיננסי. מתמחה בכלכלת המשפחה וניהול תקציב אישי. מסייעת
-                למשפחות לצאת מהמינוס ולהשיג יציבות כלכלית ולבנות עתיד פיננסי
-                בטוח.
+                יועץ פיננסי בעל תעודת הסמכה מקצועית, עם ניסיון של מעל 5 שנים
+                בתחום הייעוץ הפיננסי.
+                <br />
+                מתמחה בכלכלת המשפחה וניהול תקציב אישי.
+                <br />
+                מסייע למשפחות לצמוח כלכלית ולבנות עתיד טוב יותר.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Award className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
                   <span className="text-green-700">
-                    יועצת פיננסית מוסמכת עם רישיון משרד האוצר
+                    יועץ פיננסי מוסמך עם תעודה מקצועית
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -281,7 +220,7 @@ const Index = () => {
                 <div className="flex items-start gap-3">
                   <Shield className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
                   <span className="text-green-700">
-                    מתמחה בניהול סיכונים וחיסכון למשפחות
+                    מתמחה בניהול סיכונים וכלכלת המשפחה
                   </span>
                 </div>
               </div>
@@ -290,18 +229,20 @@ const Index = () => {
             <div className="flex flex-col items-center gap-6">
               <img
                 src="/assets/profile.png"
-                alt="לירן אהרון - יועצת פיננסית"
+                alt="לירן אהרון - יועץ פיננסי"
                 className="w-64 h-64 object-cover rounded-2xl shadow-lg hover-scale"
               />
 
               <div className="bg-gradient-to-br from-emerald-50 to-green-100 p-8 rounded-2xl border border-emerald-200">
-                <h3 className="text-2xl font-bold text-emerald-800 mb-4">
-                  הגישה שלי
+                <h3 className="text-2xl font-bold text-emerald-800 mb-5">
+                  האני מאמין שלי
                 </h3>
                 <p className="text-green-700 text-lg leading-relaxed">
-                  אני מאמינה שכל משפחה יכולה להשיג יציבות כלכלית עם התוכנית
-                  הנכונה. הגישה שלי מבוססת על הבנת הצרכים הייחודיים של כל משפחה
-                  ובניית תוכנית מעשית ומותאמת אישית.
+                  אני מאמין שכל משפחה יכולה להשיג צמיחה ויציבות כלכלית עם
+                  התוכנית הנכונה.
+                  <br />
+                  הגישה שלי מבוססת על הבנת הצרכים הייחודיים של כל משפחה ובניית
+                  תוכנית מעשית ומותאמת אישית.
                 </p>
               </div>
             </div>
@@ -320,15 +261,15 @@ const Index = () => {
               <ul className="space-y-4 text-green-700 text-lg">
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <span>לא מצליחים לסגור את החודש</span>
+                  <span>לא מצליחים לסגור את החודש?</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <span>לא יודעים לאן הכסף נעלם</span>
+                  <span>לא יודעים לאן הכסף נעלם?</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <div className="w-2 h-2 bg-red-500 rounded-full mt-3 flex-shrink-0"></div>
-                  <span>חולמים על חיסכון אבל זה נראה בלתי אפשרי</span>
+                  <span>חולמים על חיסכון אבל זה נראה בלתי אפשרי?</span>
                 </li>
               </ul>
             </div>
@@ -353,7 +294,7 @@ const Index = () => {
             מה תקבלו בייעוץ?
           </h2>
           <p className="text-xl text-green-700 mb-12">
-            כל מה שאתם צריכים כדי להשיג שליטה כלכלית מלאה
+            כל מה שאתם צריכים כדי להשיג צמיחה ויציבות כלכלית מלאה
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -374,15 +315,15 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* Recommendations Section */}
       <section className="py-16 px-4 bg-white/80 backdrop-blur-sm">
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 text-center mb-12">
             מה הלקוחות שלנו אומרים
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {testimonials.map((testimonial, index) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
+            {recommendations.map((recommendation, index) => (
               <Card
                 key={index}
                 className="p-4 md:p-6 hover:shadow-lg transition-all hover-scale bg-gradient-to-br from-emerald-50 to-green-100 border-emerald-200 animate-fade-in h-full"
@@ -397,10 +338,10 @@ const Index = () => {
                     ))}
                   </div>
                   <p className="text-green-700 mb-4 leading-relaxed text-sm md:text-base flex-grow">
-                    "{testimonial.text}"
+                    "{recommendation.text}"
                   </p>
                   <p className="font-semibold text-emerald-800 text-sm md:text-base">
-                    - {testimonial.name}
+                    - {recommendation.name}
                   </p>
                 </CardContent>
               </Card>
@@ -409,18 +350,18 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Leads Form Section */}
       <section
-        id="contact-form"
+        id="leads-form"
         className="py-20 px-4 bg-gradient-to-b from-emerald-50 to-green-100"
       >
         <div className="container mx-auto max-w-2xl">
           <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-4">
-              קבלו פגישת ייעוץ מקצועית
+              לקביעת פגישת ייעוץ מקצועית
             </h2>
             <p className="text-xl text-green-700">
-              השאירו פרטים ונחזור אליכם תוך 24 שעות
+              השאירו פרטים ונחזור אליכם בהקדם
             </p>
           </div>
 
@@ -440,7 +381,7 @@ const Index = () => {
                   className={`text-right border-emerald-200 focus:border-emerald-400 ${
                     formErrors.name ? "border-red-500" : ""
                   }`}
-                  placeholder="הכניסו את שמכם המלא"
+                  placeholder="שמכם המלא"
                 />
                 {formErrors.name && (
                   <p className="text-red-500 text-sm mt-1 text-right">
@@ -523,7 +464,7 @@ const Index = () => {
                 disabled={isSubmitting}
                 className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-4 text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover-scale"
               >
-                {isSubmitting ? "שולח..." : "שלחו פנייה וקבלו ייעוץ מקצועי"}
+                {isSubmitting ? "שולח..." : "שליחת פנייה"}
               </Button>
             </form>
           </Card>
@@ -537,34 +478,36 @@ const Index = () => {
         style={{ opacity: whatsappOpacity }}
         aria-label="צור קשר בוואטסאפ"
       >
-        <MessageCircle className="w-6 h-6" />
+        <img
+          src="/assets/whatsapp-icon.png"
+          alt="Facebook"
+          className="w-6 h-6 filter brightness-0 invert"
+        />
       </button>
 
       {/* Footer */}
       <footer id="footer" className="bg-emerald-900 text-white py-12 px-4">
         <div className="container mx-auto max-w-4xl text-center">
-          <h3 className="text-2xl font-bold mb-4">
-            צמיחה מהספה - יועצת פיננסית לכלכלת המשפחה
-          </h3>
+          <h3 className="text-2xl font-bold mb-4">צמיחה מהספה - לירן אהרון</h3>
           <p className="text-emerald-200 mb-6">
-            עוזרת למשפחות להשיג שליטה כלכלית ולבנות עתיד פיננסי יציב
+            מסייע למשפחות לצמוח כלכלית ולבנות עתיד פיננסי
           </p>
 
           <div className="flex items-center justify-center gap-8 text-emerald-200 mb-8">
             <div className="flex items-center gap-2">
               <Phone className="w-5 h-5" />
-              <span>054-430-8998</span>
+              <span>{footerPhoneNumber}</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-5 h-5" />
-              <span>liran@tzmicha-mehsapa.co.il</span>
+              <span>{footerEmail}</span>
             </div>
           </div>
 
-          {/* Social Media Icons */}
+          {/* Social Media Links */}
           <div className="flex items-center justify-center gap-6">
             <a
-              href="https://facebook.com/tzmicha-mehsapa"
+              href={`https://facebook.com/${facebookPageName}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
@@ -577,7 +520,7 @@ const Index = () => {
               />
             </a>
             <a
-              href="https://instagram.com/tzmicha_mehsapa"
+              href={`https://instagram.com/${instagramPageName}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
@@ -590,7 +533,7 @@ const Index = () => {
               />
             </a>
             <a
-              href="https://tiktok.com/@tzmicha_mehsapa"
+              href={`https://tiktok.com/@${tiktokPageName}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
