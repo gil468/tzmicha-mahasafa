@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -13,6 +14,8 @@ import {
   TrendingUp,
   Shield,
   Check,
+  CheckIcon,
+  XIcon,
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
@@ -63,16 +66,26 @@ const Index = () => {
       errors.name = "שם מלא חייב להכיל לפחות 2 תווים";
     }
 
+    // Enhanced phone validation - numeric only and 9-10 digits
     if (!formData.phone.trim()) {
       errors.phone = "מספר טלפון הוא שדה חובה";
-    } else if (!/^[0-9\-\+\s]{9,15}$/.test(formData.phone.replace(/\s/g, ""))) {
-      errors.phone = "מספר טלפון לא תקין";
+    } else {
+      const numericPhone = formData.phone.replace(/\D/g, "");
+      if (numericPhone.length < 9 || numericPhone.length > 10) {
+        errors.phone = "מספר טלפון חייב להכיל 9-10 ספרות";
+      } else if (!/^\d{9,10}$/.test(numericPhone)) {
+        errors.phone = "מספר טלפון יכול להכיל ספרות בלבד";
+      }
     }
 
+    // Enhanced email validation
     if (!formData.email.trim()) {
       errors.email = "כתובת דוא״ל היא שדה חובה";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      errors.email = "כתובת דוא״ל לא תקינה";
+    } else {
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(formData.email)) {
+        errors.email = "כתובת דוא״ל לא תקינה";
+      }
     }
 
     if (!formData.message.trim()) {
@@ -83,6 +96,12 @@ const Index = () => {
 
     setFormErrors(errors);
     return !Object.values(errors).some((error) => error);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Allow only numeric characters and basic formatting
+    const value = e.target.value.replace(/[^\d\-\s]/g, "");
+    setFormData({ ...formData, phone: value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -110,7 +129,12 @@ const Index = () => {
 
       if (response.ok) {
         toast({
-          title: "✅ תודה על הפנייה!",
+          title: (
+            <div className="flex items-center gap-2 text-right">
+              <CheckIcon className="w-5 h-5 text-green-600" />
+              <span>תודה על הפנייה!</span>
+            </div>
+          ),
           description: "ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ המקצועית",
           className: "bg-green-50 border-green-200 text-green-800 text-right",
         });
@@ -121,7 +145,12 @@ const Index = () => {
       }
     } catch (error) {
       toast({
-        title: "❌ שגיאה",
+        title: (
+          <div className="flex items-center gap-2 text-right">
+            <XIcon className="w-5 h-5 text-red-600" />
+            <span>שגיאה</span>
+          </div>
+        ),
         description: "אירעה שגיאה בשליחת הטופס. אנא נסו שוב מאוחר יותר.",
         variant: "destructive",
         className: "text-right",
@@ -175,14 +204,14 @@ const Index = () => {
           {/* Logo */}
           <div className="flex justify-center mb-8 animate-scale-in">
             <img
-              src="/lovable-uploads/e99219e3-5aaf-4513-a989-3ed57bf0e0ee.png"
-              alt="פיני שגב יועץ פיננסי"
+              src="/assets/web-logo.png"
+              alt="צמיחה מהספה יועצת פיננסית"
               className="w-32 h-32 object-contain hover-scale"
             />
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold text-emerald-900 mb-4 leading-tight">
-            פיני שגב - יועץ פיננסי לכלכלת המשפחה
+            לירן אהרון - יועצת פיננסית לכלכלת המשפחה
           </h1>
 
           <h2 className="text-3xl md:text-5xl font-bold text-green-800 mb-6 leading-tight">
@@ -221,18 +250,18 @@ const Index = () => {
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-6">
-              מי אני ומה אני מציע
+              מי אני ומה אני מציעה
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center animate-fade-in">
             <div>
               <h3 className="text-2xl font-bold text-emerald-900 mb-4">
-                פיני שגב - יועץ פיננסי מוסמך
+                לירן אהרון - יועצת פיננסית מוסמכת
               </h3>
               <p className="text-green-700 text-lg leading-relaxed mb-6">
-                יועץ פיננסי עם תעודת הסמכה, בעל ניסיון של מעל 5 שנים בתחום
-                הייעוץ הפיננסי. מתמחה בכלכלת המשפחה וניהול תקציב אישי. מסייע
+                יועצת פיננסית עם תעודת הסמכה, בעלת ניסיון של מעל 5 שנים בתחום
+                הייעוץ הפיננסי. מתמחה בכלכלת המשפחה וניהול תקציב אישי. מסייעת
                 למשפחות לצאת מהמינוס ולהשיג יציבות כלכלית ולבנות עתיד פיננסי
                 בטוח.
               </p>
@@ -241,13 +270,13 @@ const Index = () => {
                 <div className="flex items-start gap-3">
                   <Award className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
                   <span className="text-green-700">
-                    יועץ פיננסי מוסמך עם רישיון משרד האוצר
+                    יועצת פיננסית מוסמכת עם רישיון משרד האוצר
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
                   <TrendingUp className="w-6 h-6 text-emerald-600 flex-shrink-0 mt-1" />
                   <span className="text-green-700">
-                    מומחה לתכנון פיננסי ארוך טווח
+                    מומחית לתכנון פיננסי ארוך טווח
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
@@ -261,8 +290,8 @@ const Index = () => {
 
             <div className="flex flex-col items-center gap-6">
               <img
-                src="/lovable-uploads/513a444e-2710-498f-b033-34a020ebe4cb.png"
-                alt="פיני שגב - יועץ פיננסי"
+                src="/assets/profile.png"
+                alt="לירן אהרון - יועצת פיננסית"
                 className="w-64 h-64 object-cover rounded-2xl shadow-lg hover-scale"
               />
 
@@ -271,7 +300,7 @@ const Index = () => {
                   הגישה שלי
                 </h3>
                 <p className="text-green-700 text-lg leading-relaxed">
-                  אני מאמין שכל משפחה יכולה להשיג יציבות כלכלית עם התוכנית
+                  אני מאמינה שכל משפחה יכולה להשיג יציבות כלכלית עם התוכנית
                   הנכונה. הגישה שלי מבוססת על הבנת הצרכים הייחודיים של כל משפחה
                   ובניית תוכנית מעשית ומותאמת אישית.
                 </p>
@@ -430,13 +459,11 @@ const Index = () => {
                     type="tel"
                     required
                     value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
+                    onChange={handlePhoneChange}
                     className={`text-right border-emerald-200 focus:border-emerald-400 ${
                       formErrors.phone ? "border-red-500" : ""
                     }`}
-                    placeholder="050-1234567"
+                    placeholder="0501234567"
                   />
                   {formErrors.phone && (
                     <p className="text-red-500 text-sm mt-1 text-right">
@@ -518,21 +545,64 @@ const Index = () => {
       <footer id="footer" className="bg-emerald-900 text-white py-12 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h3 className="text-2xl font-bold mb-4">
-            פיני שגב - יועץ פיננסי לכלכלת המשפחה
+            צמיחה מהספה - יועצת פיננסית לכלכלת המשפחה
           </h3>
           <p className="text-emerald-200 mb-6">
-            עוזר למשפחות להשיג שליטה כלכלית ולבנות עתיד פיננסי יציב
+            עוזרת למשפחות להשיג שליטה כלכלית ולבנות עתיד פיננסי יציב
           </p>
 
-          <div className="flex items-center justify-center gap-8 text-emerald-200">
+          <div className="flex items-center justify-center gap-8 text-emerald-200 mb-8">
             <div className="flex items-center gap-2">
               <Phone className="w-5 h-5" />
               <span>054-430-8998</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-5 h-5" />
-              <span>info@pini-sagiv.co.il</span>
+              <span>liran@tzmicha-mehsapa.co.il</span>
             </div>
+          </div>
+
+          {/* Social Media Icons */}
+          <div className="flex items-center justify-center gap-6">
+            <a
+              href="https://facebook.com/tzmicha-mehsapa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
+              aria-label="Facebook"
+            >
+              <img
+                src="/assets/facebook-icon.png"
+                alt="Facebook"
+                className="w-6 h-6 filter brightness-0 invert"
+              />
+            </a>
+            <a
+              href="https://instagram.com/tzmicha_mehsapa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
+              aria-label="Instagram"
+            >
+              <img
+                src="/assets/instagram-icon.png"
+                alt="Instagram"
+                className="w-6 h-6 filter brightness-0 invert"
+              />
+            </a>
+            <a
+              href="https://tiktok.com/@tzmicha_mehsapa"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
+              aria-label="TikTok"
+            >
+              <img
+                src="/assets/tiktok-icon.png"
+                alt="TikTok"
+                className="w-6 h-6 filter brightness-0 invert"
+              />
+            </a>
           </div>
         </div>
       </footer>
