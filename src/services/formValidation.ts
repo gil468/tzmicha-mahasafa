@@ -1,5 +1,4 @@
-
-import { LeadForm } from "@/models/LeadForm";
+import { LeadForm } from "@/models/leadForm";
 
 export function validateFormData(formData: LeadForm) {
   const errors = new LeadForm();
