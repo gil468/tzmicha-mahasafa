@@ -1,4 +1,4 @@
-import { LeadForm } from "@/models/leadForm";
+import { LeadForm } from "@/models/LeadForm";
 
 export function validateFormData(formData: LeadForm) {
   const errors = new LeadForm();
@@ -28,7 +28,8 @@ export function validateFormData(formData: LeadForm) {
   if (!formData.email.trim()) {
     errors.email = "כתובת דוא״ל היא שדה חובה";
   } else {
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    const emailRegex =
+      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (!emailRegex.test(formData.email.trim())) {
       errors.email = "כתובת דוא״ל לא תקינה";
     } else if (formData.email.length > 254) {

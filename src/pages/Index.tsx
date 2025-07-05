@@ -1,10 +1,9 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { LeadForm } from "@/models/leadForm";
+import { LeadForm } from "@/models/LeadForm";
 import { validateFormData } from "@/services/formValidation";
 import VideoSection from "@/components/VideoSection";
 import {
@@ -314,7 +313,9 @@ const Index = () => {
                 <CardContent className="p-0">
                   <div className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-1" />
-                    <span className="text-green-700 text-right text-sm sm:text-base">{benefit}</span>
+                    <span className="text-green-700 text-right text-sm sm:text-base">
+                      {benefit}
+                    </span>
                   </div>
                 </CardContent>
               </Card>
@@ -499,9 +500,14 @@ const Index = () => {
       </button>
 
       {/* Footer */}
-      <footer id="footer" className="bg-emerald-900 text-white py-8 sm:py-12 px-4">
+      <footer
+        id="footer"
+        className="bg-emerald-900 text-white py-8 sm:py-12 px-4"
+      >
         <div className="container mx-auto max-w-4xl text-center">
-          <h3 className="text-xl sm:text-2xl font-bold mb-4">צמיחה מהספה - לירן אהרון</h3>
+          <h3 className="text-xl sm:text-2xl font-bold mb-4">
+            צמיחה מהספה - לירן אהרון
+          </h3>
           <p className="text-emerald-200 mb-6 text-sm sm:text-base">
             מסייע למשפחות לצמוח כלכלית ולבנות עתיד פיננסי
           </p>
