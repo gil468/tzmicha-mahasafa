@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -133,7 +132,8 @@ All colors MUST be HSL.
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0px);
   }
   50% {
@@ -170,9 +170,16 @@ html {
 
 /* Add subtle gradient background pattern */
 body {
-  background-image: 
-    radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      rgba(34, 197, 94, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(16, 185, 129, 0.1) 0%,
+      transparent 50%
+    );
   /* Ensure background is fixed to prevent repainting issues during scroll */
   background-attachment: fixed;
   background-size: 100% 100%;
@@ -187,12 +194,12 @@ body {
 .hover-scale,
 .animate-fade-in,
 .animate-scale-in {
-  /* Use transform3d to enable hardware acceleration */
   transform: translate3d(0, 0, 0);
 }
 
 /* Improve form input performance */
-input, textarea {
+input,
+textarea {
   /* Reduce repaints during typing */
   will-change: contents;
 }
@@ -235,7 +242,7 @@ input, textarea {
   html {
     scroll-behavior: auto;
   }
-  
+
   .animate-fade-in,
   .animate-scale-in,
   .animate-float,
