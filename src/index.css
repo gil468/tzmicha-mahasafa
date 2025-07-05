@@ -40,19 +40,12 @@ All colors MUST be HSL.
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -102,6 +95,17 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    /* Improve font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Fix potential scroll issues */
+    overflow-x: hidden;
+  }
+
+  /* Prevent layout shift during image loading */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -160,6 +164,8 @@ All colors MUST be HSL.
 /* Smooth scrolling for the entire page */
 html {
   scroll-behavior: smooth;
+  /* Improve scroll performance */
+  scroll-padding-top: 2rem;
 }
 
 /* Add subtle gradient background pattern */
@@ -167,4 +173,91 @@ body {
   background-image: 
     radial-gradient(circle at 25% 25%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
     radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+  /* Ensure background is fixed to prevent repainting issues during scroll */
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+/* Performance optimizations */
+* {
+  /* Enable hardware acceleration for transforms */
+  will-change: auto;
+}
+
+.hover-scale,
+.animate-fade-in,
+.animate-scale-in {
+  /* Use transform3d to enable hardware acceleration */
+  transform: translate3d(0, 0, 0);
+}
+
+/* Improve form input performance */
+input, textarea {
+  /* Reduce repaints during typing */
+  will-change: contents;
+}
+
+/* Toast improvements */
+[data-sonner-toast] {
+  direction: rtl !important;
+}
+
+[data-sonner-toast] [data-description] {
+  text-align: right !important;
+}
+
+/* Responsive video container */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Security: Prevent content from being selected in certain areas */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  .animate-fade-in,
+  .animate-scale-in,
+  .animate-float,
+  .hover-scale {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gradient-to-b,
+  .bg-gradient-to-br {
+    background: var(--background);
+  }
+}
+
+/* Print styles */
+@media print {
+  .fixed,
+  button,
+  .hover-scale {
+    display: none !important;
+  }
 }
