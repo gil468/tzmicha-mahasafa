@@ -61,7 +61,7 @@ const FooterSection = () => {
             />
           </a>
           <a
-            href={`https://tiktok.com/@${tiktokPageName}`}
+            href={`https://tiktok.com/${tiktokPageName}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"

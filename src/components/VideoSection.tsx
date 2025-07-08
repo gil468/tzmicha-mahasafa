@@ -14,7 +14,7 @@ const VideoSection = () => {
         <div className="flex justify-center animate-scale-in">
           <div className="relative w-full max-w-4xl md:max-w-5xl lg:max-w-6xl aspect-video">
             <iframe
-              src={`${youtubeVideoUrl}`}
+              src={`https://www.youtube.com/${youtubeVideoUrl}`}
               title="המדריך המלא לעצמאות פיננסית"
               className="w-full h-full absolute top-0 left-0"
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
