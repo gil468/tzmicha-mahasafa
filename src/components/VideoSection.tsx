@@ -1,15 +1,16 @@
 const VideoSection = () => {
   const youtubeVideoUrl = import.meta.env.VITE_YOUTUBE_VIDEO_URL;
+  const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
+
   return (
-    <section className="py-16 px-4 bg-gradient-to-b from-white/80 to-emerald-50/50 backdrop-blur-sm">
+    <section className="py-8 sm:py-8 px-4 ">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl md:text-4xl font-bold text-emerald-900 mb-4">
-            צפו בסרטון ההדרכה שלנו
+          <h2
+            className={`text-3xl md:text-4xl font-bold text-${mainTextColor} mb-4`}
+          >
+            רוצים לגלות איך גם אתם יכולים לצמוח כלכלית - בלי לצאת מהספה?
           </h2>
-          <p className="text-xl text-green-700 max-w-2xl mx-auto">
-            למדו איך להתחיל את המסע שלכם לצמיחה מהספה
-          </p>
         </div>
         <div className="flex justify-center animate-scale-in">
           <div className="relative w-full max-w-4xl md:max-w-5xl lg:max-w-6xl aspect-video">
@@ -22,6 +23,11 @@ const VideoSection = () => {
               loading="lazy"
             />
           </div>
+        </div>
+        <div className="text-center py-12 sm:py-12 animate-fade-in p-4">
+          <p className="text-2xl sm:text-4xl text-orange-700 max-w-2xl mx-auto">
+            השאירו פרטים ונחזור אליכם עם כל המידע על התוכנית הקרובה 👇🏻
+          </p>
         </div>
       </div>
     </section>

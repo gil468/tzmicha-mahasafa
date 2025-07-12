@@ -8,19 +8,16 @@ const FooterSection = () => {
   const tiktokPageName = import.meta.env.VITE_TIKTOK_PAGE_NAME;
 
   return (
-    <footer
-      id="footer"
-      className="bg-emerald-900 text-white py-8 sm:py-12 px-4"
-    >
+    <footer id="footer" className="bg-amber-600 text-white py-8 sm:py-12 px-4">
       <div className="container mx-auto max-w-4xl text-center">
         <h3 className="text-xl sm:text-2xl font-bold mb-4">
           צמיחה מהספה - לירן אהרון
         </h3>
-        <p className="text-emerald-200 mb-6 text-sm sm:text-base">
-          מסייע למשפחות לצמוח כלכלית ולבנות עתיד פיננסי
+        <p className="text-white mb-6 text-sm sm:text-base">
+          תוכנית הליווי שתכניס שקט כלכלי הביתה
         </p>
 
-        <div className="flex items-center justify-center gap-4 sm:gap-8 text-emerald-200 mb-6 sm:mb-8 flex-wrap">
+        <div className="flex items-center justify-center gap-4 sm:gap-8 text-white mb-6 sm:mb-8 flex-wrap">
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="text-sm sm:text-base">{footerPhoneNumber}</span>

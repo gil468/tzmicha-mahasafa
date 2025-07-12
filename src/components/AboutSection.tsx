@@ -1,70 +1,71 @@
-import { Award, Shield, TrendingUp } from "lucide-react";
+import { Check } from "lucide-react";
+
+const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const AboutSection = () => {
   return (
-    <section className="py-12 sm:py-16 px-4 bg-white/80 backdrop-blur-sm">
+    <section className="py-3 sm:py-1 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-900 mb-4 sm:mb-6 px-4">
+          <h2
+            className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-4 sm:mb-6 px-4`}
+          >
             מי אני ומה אני מציע
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center animate-fade-in">
           <div className="px-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-emerald-900 mb-4">
-              לירן אהרון - יועץ פיננסי מוסמך
+            <h3
+              className={`text-xl sm:text-2xl font-bold text-${mainTextColor} mb-4`}
+            >
+              אני לירן אהרון - אבא, בעל, שחקן טניס שולחן מקצועי ומאמן כלכלי
             </h3>
-            <p className="text-green-700 text-base sm:text-lg leading-relaxed mb-6">
-              יועץ פיננסי בעל תעודת הסמכה מקצועית, עם ניסיון של מעל 5 שנים בתחום
-              הייעוץ הפיננסי.
+            <p
+              className={`text-${mainTextColor} text-base sm:text-xl leading-relaxed mb-6`}
+            >
+              התשוקה הייתה מאז שאני חייל, אבל הכל התחיל לבעור לפני 5 שנים כאשר
+              הוצאתי משפחה מחוב של 2.5 מיליון ש״ח בהוצאה לפועל למצב יציב, כולל
+              רכישת הדירה שלהם.
               <br />
-              מתמחה בכלכלת המשפחה וניהול תקציב אישי.
+              והיום הם גם חוסכים.
               <br />
-              מסייע למשפחות לצמוח כלכלית ולבנות עתיד טוב יותר.
+              למה אני מספר לכם את זה?
+              <br />
+              כי אם הם הצליחו אז משפחה ממוצעת יכולה לעוף גבוה!
             </p>
-
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Award className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <span className="text-green-700 text-sm sm:text-base">
-                  יועץ פיננסי מוסמך עם תעודה מקצועית
-                </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <span className="text-green-700 text-sm sm:text-base">
-                  מומחה לתכנון פיננסי ארוך טווח
-                </span>
-              </div>
-              <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-600 flex-shrink-0 mt-1" />
-                <span className="text-green-700 text-sm sm:text-base">
-                  מתמחה בניהול סיכונים וכלכלת המשפחה
-                </span>
-              </div>
-            </div>
           </div>
 
           <div className="flex flex-col items-center gap-6 px-4">
             <img
               src="/assets/profile.png"
-              alt="לירן אהרון - יועץ פיננסי"
+              alt="לירן אהרון - מאמן כלכלי"
               className="w-48 h-48 sm:w-64 sm:h-64 object-cover rounded-2xl shadow-lg hover-scale"
               loading="lazy"
             />
 
-            <div className="bg-gradient-to-br from-emerald-50 to-green-100 p-6 sm:p-8 rounded-2xl border border-emerald-200">
-              <h3 className="text-xl sm:text-2xl font-bold text-emerald-800 mb-4 sm:mb-5">
-                האני מאמין שלי
+            <div className="bg-white/90 p-6 sm:p-8 rounded-2xl border border-slate-300">
+              <h3 className="text-xl sm:text-2xl font-bold text-amber-600 mb-4 sm:mb-5">
+                תוכנית ליווי כלכלית שמתאימה בדיוק למשפחות וצעירים שרוצים
               </h3>
-              <p className="text-green-700 text-base sm:text-lg leading-relaxed">
-                אני מאמין שכל משפחה יכולה להשיג צמיחה ויציבות כלכלית עם התוכנית
-                הנכונה.
-                <br />
-                הגישה שלי מבוססת על הבנת הצרכים הייחודיים של כל משפחה ובניית
-                תוכנית מעשית ומותאמת אישית.
-              </p>
+              <div className="flex items-start gap-3">
+                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                <span className="text-amber-600 text-sm sm:text-base">
+                  לעשות סדר בהוצאות
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                <span className="text-amber-600 text-sm sm:text-base">
+                  להתחיל לחסוך בלי לכבות את האור בבית
+                </span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                <span className="text-amber-600 text-sm sm:text-base">
+                  לבנות תוכנית כלכלית פשוטה, שתעבוד בשבילכם - לא נגדכם
+                </span>
+              </div>
             </div>
           </div>
         </div>

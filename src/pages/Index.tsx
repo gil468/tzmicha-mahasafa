@@ -39,7 +39,7 @@ const Index = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-b from-emerald-50 via-green-50 to-teal-100"
+      className={`min-h-screen bg-gradient-to-b from-amber-50 to-orange-200`}
       dir="rtl"
     >
       <HeroSection onConsultButtonClick={handleConsultButtonClick} />

@@ -134,7 +134,7 @@ const FormSubmission = ({
         type="submit"
         size="lg"
         disabled={isSubmitting}
-        className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover-scale"
+        className="w-full bg-amber-500 hover:bg-amber-600 text-white py-3 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition-all hover-scale"
       >
         {isSubmitting ? "שולח..." : "שליחת פנייה"}
       </Button>

@@ -26,7 +26,7 @@ const FormInput = ({
 }: FormInputProps) => {
   return (
     <div>
-      <label className="block text-emerald-800 font-semibold mb-2 text-sm sm:text-base">
+      <label className="block text-amber-600 font-semibold mb-2 text-sm sm:text-base">
         {label}
       </label>
       {isTextarea ? (
@@ -34,7 +34,7 @@ const FormInput = ({
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`text-right border-emerald-200 focus:border-emerald-400 min-h-[100px] ${
+          className={`text-right border-amber-200 focus:border-amber-500 min-h-[100px] ${
             error ? "border-red-500" : ""
           }`}
           placeholder={placeholder}
@@ -45,7 +45,7 @@ const FormInput = ({
           required={required}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`text-right border-emerald-200 focus:border-emerald-400 ${
+          className={`text-right border-amber-200 focus:border-amber-500 ${
             error ? "border-red-500" : ""
           }`}
           placeholder={placeholder}

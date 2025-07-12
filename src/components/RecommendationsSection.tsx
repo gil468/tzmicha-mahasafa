@@ -3,20 +3,21 @@ import { Star } from "lucide-react";
 
 const recommendations = [
   {
-    name: "שרה כהן",
-    text: "תוך 3 חודשים הצלחנו לחסוך 2,000 ש״ח בחודש ולצאת מהמינוס. הייעוץ שינה לנו את החיים!",
+    text: "לא האמנתי כמה קל להתחיל לשנות הרגלים כלכליים. זה לא כאב - זה לשחרר",
   },
   {
-    name: "דוד לוי",
-    text: "סוף סוף יש לנו שליטה על התקציב. בעזרת הייעוץ המקצועי, ממליץ בחום!",
+    text: "הפסקנו לריב על כסף. יש לנו שפה משותפת וביטחון בעתיד",
   },
 ];
+const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const RecommendationsSection = () => {
   return (
-    <section className="py-12 sm:py-16 px-4 bg-white/80 backdrop-blur-sm">
+    <section className="py-8 sm:py-8 px-4">
       <div className="container mx-auto max-w-6xl">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-emerald-900 text-center mb-8 sm:mb-12 px-4">
+        <h2
+          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} text-center mb-8 sm:mb-12 px-4`}
+        >
           מה הלקוחות שלנו אומרים
         </h2>
 
@@ -24,7 +25,7 @@ const RecommendationsSection = () => {
           {recommendations.map((recommendation, index) => (
             <Card
               key={index}
-              className="p-4 md:p-6 hover:shadow-lg transition-all hover-scale bg-gradient-to-br from-emerald-50 to-green-100 border-emerald-200 animate-fade-in h-full"
+              className="p-4 md:p-6 hover:shadow-lg transition-all hover-scale bg-white/90 border-amber-300 animate-fade-in h-full"
             >
               <CardContent className="p-0 flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
@@ -35,11 +36,8 @@ const RecommendationsSection = () => {
                     />
                   ))}
                 </div>
-                <p className="text-green-700 mb-4 leading-relaxed text-sm md:text-base flex-grow">
+                <p className="text-green-700 mb-4 leading-relaxed text-base md:text-lg flex-grow">
                   "{recommendation.text}"
-                </p>
-                <p className="font-semibold text-emerald-800 text-sm md:text-base">
-                  - {recommendation.name}
                 </p>
               </CardContent>
             </Card>

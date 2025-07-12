@@ -14,13 +14,10 @@ const LeadsFormSection = ({
   const [formErrors, setFormErrors] = useState<LeadFormErrors>({});
 
   return (
-    <section
-      id="leads-form"
-      className="py-16 sm:py-20 px-4 bg-gradient-to-b from-emerald-50 to-green-100"
-    >
+    <section id="leads-form" className="py-8 sm:py-8 px-4">
       <div className="container mx-auto max-w-2xl">
         <FormHeader />
-        <Card className="p-6 sm:p-8 shadow-xl bg-white/95 border-2 border-emerald-200 animate-scale-in mx-4">
+        <Card className="p-6 sm:p-8 shadow-xl bg-white/95 border-2 border-amber-400 animate-scale-in mx-4">
           <FormSubmission
             formData={formData}
             setFormData={setFormData}
