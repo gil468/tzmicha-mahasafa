@@ -1,4 +1,4 @@
-import { Check } from "lucide-react";
+import { ChartNoAxesCombined, ChartPie, Check } from "lucide-react";
 
 const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
@@ -10,7 +10,7 @@ const AboutSection = () => {
           <h2
             className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-4 sm:mb-6 px-4`}
           >
-            מי אני ומה אני מציע
+            קצת עליי
           </h2>
         </div>
 
@@ -19,20 +19,23 @@ const AboutSection = () => {
             <h3
               className={`text-xl sm:text-2xl font-bold text-${mainTextColor} mb-4`}
             >
-              אני לירן אהרון - אבא, בעל, שחקן טניס שולחן מקצועי ומאמן כלכלי
+              אני לירן אהרון - אבא, בעל, חובב גדול של טניס שולחן ומעריך ספורט,
+              ולא פחות - מאמן להתפתחות כלכלית
             </h3>
             <p
               className={`text-${mainTextColor} text-base sm:text-xl leading-relaxed mb-6`}
             >
-              התשוקה הייתה מאז שאני חייל, אבל הכל התחיל לבעור לפני 5 שנים כאשר
-              הוצאתי משפחה מחוב של 2.5 מיליון ש״ח בהוצאה לפועל למצב יציב, כולל
-              רכישת הדירה שלהם.
+              התשוקה שלי להתפתחות כלכלית הייתה מאז שאני חייל, אבל בתכלס הכל
+              התחיל לבעור לפני 5 שנים כאשר הוצאתי משפחה מחוב של 2.5 מיליון ש״ח
+              בהוצאה לפועל למצב יציב, כולל רכישת הדירה שלהם, והיום הם יציבים וגם
+              חוסכים.
               <br />
-              והיום הם גם חוסכים.
+              מאז ובאופן טבעי לגמרי הצלחתי לעבוד עם אנשים ולשפר את עתידם הכלכלי
+              וגם את שלי.
               <br />
               למה אני מספר לכם את זה?
               <br />
-              כי אם הם הצליחו אז משפחה ממוצעת יכולה לעוף גבוה!
+              כי אם הם הצליחו אז משפחה ממוצעת יכולה להמריא!
             </p>
           </div>
 
@@ -51,17 +54,17 @@ const AboutSection = () => {
               <div className="flex items-start gap-3">
                 <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
                 <span className="text-amber-600 text-sm sm:text-base">
-                  לעשות סדר בהוצאות
+                  לעשות סדר בתזרים של הבית (מתאים גם לעצמאיים)
                 </span>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                <ChartPie className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
                 <span className="text-amber-600 text-sm sm:text-base">
                   להתחיל לחסוך בלי לכבות את האור בבית
                 </span>
               </div>
               <div className="flex items-start gap-3">
-                <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                <ChartNoAxesCombined className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
                 <span className="text-amber-600 text-sm sm:text-base">
                   לבנות תוכנית כלכלית פשוטה, שתעבוד בשבילכם - לא נגדכם
                 </span>

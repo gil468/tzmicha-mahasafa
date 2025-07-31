@@ -3,17 +3,17 @@ import { Star } from "lucide-react";
 
 const recommendations = [
   {
-    text: "לא האמנתי כמה קל להתחיל לשנות הרגלים כלכליים. זה לא כאב - זה לשחרר",
+    text: "פחדנו להבין בכסף וב-5 מפגשים והמון יחס אישי וזמינות של לירן הצלחנו להתאפס ולבנות תוכנית לעתיד למרות הכל",
   },
   {
-    text: "הפסקנו לריב על כסף. יש לנו שפה משותפת וביטחון בעתיד",
+    text: "לא האמנתי כמה זה טוב להתחיל לשנות הרגלים כלכליים. זה לא כאב - זה משחרר ואפילו רווחי",
   },
 ];
 const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const RecommendationsSection = () => {
   return (
-    <section className="py-8 sm:py-8 px-4">
+    <section className="py-8 sm:py-8 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-6xl">
         <h2
           className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} text-center mb-8 sm:mb-12 px-4`}
@@ -25,7 +25,7 @@ const RecommendationsSection = () => {
           {recommendations.map((recommendation, index) => (
             <Card
               key={index}
-              className="p-4 md:p-6 hover:shadow-lg transition-all hover-scale bg-white/90 border-amber-300 animate-fade-in h-full"
+              className="p-4 md:p-6 hover:shadow-lg transition-all hover-scale bg-white/90 border border-slate-300 animate-fade-in h-full"
             >
               <CardContent className="p-0 flex flex-col h-full">
                 <div className="flex items-center gap-2 mb-4">
@@ -36,7 +36,7 @@ const RecommendationsSection = () => {
                     />
                   ))}
                 </div>
-                <p className="text-green-700 mb-4 leading-relaxed text-base md:text-lg flex-grow">
+                <p className="text-amber-600 mb-4 leading-relaxed text-base md:text-lg flex-grow">
                   "{recommendation.text}"
                 </p>
               </CardContent>

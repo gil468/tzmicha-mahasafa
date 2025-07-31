@@ -104,7 +104,7 @@ try {
     
     // Send email notification using environment variables
     $to = getEnvVar('NOTIFICATION_EMAIL', 'gil123991@gmail.com');
-    $subject_prefix = getEnvVar('EMAIL_SUBJECT_PREFIX', 'פנייה חדשה מהאתר פיני פיננסי - ');
+    $subject_prefix = getEnvVar('EMAIL_SUBJECT_PREFIX', 'פנייה חדשה מהאתר צמיחה מהספה - ');
     $subject = $subject_prefix . $full_name;
     
     $email_body = "
@@ -114,11 +114,11 @@ try {
         <meta charset='UTF-8'>
     </head>
     <body dir='rtl'>
-        <h2>פנייה חדשה מהאתר פיני פיננסי</h2>
+        <h2>פנייה חדשה מהאתר צמיחה מהספה</h2>
         <p><strong>שם מלא:</strong> $full_name</p>
         <p><strong>טלפון:</strong> $phone_number</p>
         <p><strong>דוא\"ל:</strong> $email</p>
-        <p><strong>תיאור המצב:</strong></p>
+        <p><strong>פירוט:</strong></p>
         <p>$description</p>
         <hr>
         <p><small>הפנייה התקבלה ב: " . date('d/m/Y H:i:s') . "</small></p>
@@ -128,7 +128,7 @@ try {
     
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: " . getEnvVar('FROM_EMAIL', 'website@pini-sagiv.co.il') . "\r\n";
+    $headers .= "From: " . getEnvVar('FROM_EMAIL', 'tzmicha-mehasafa@website.com') . "\r\n";
     $headers .= "Reply-To: $email" . "\r\n";
     
     // Send email using PHP mail() function

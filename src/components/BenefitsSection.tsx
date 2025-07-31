@@ -31,12 +31,12 @@ const BenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <Card
               key={index}
-              className="p-4 sm:p-6 hover:shadow-lg transition-all hover-scale bg-white/90 border-amber-300 animate-fade-in"
+              className="p-4 sm:p-6 hover:shadow-lg transition-all hover-scale bg-white/90 border border-slate-300 animate-fade-in"
             >
               <CardContent className="p-0">
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 flex-shrink-0 mt-1" />
-                  <span className="text-green-700 text-right text-sm sm:text-base">
+                  <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
+                  <span className="text-amber-600 text-right text-sm sm:text-base">
                     {benefit}
                   </span>
                 </div>

@@ -28,7 +28,7 @@ const HeroSection = ({ onConsultButtonClick }: HeroSectionProps) => {
         </h1>
 
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-600 mb-4 sm:mb-6 leading-tight px-4">
-          5 מפגשים. בלי בלאגן. עם תוצאות
+          5 מפגשים שיסדרו לכם את הכסף - בלי בלגן ועם תוצאות
         </h2>
 
         <Button

@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 const Index = () => {
   const defaultFormData = new LeadForm();
   const [whatsappOpacity, setWhatsappOpacity] = useState(1);
+  const vimeoVideoUrl = import.meta.env.VITE_VIMEO_VIDEO_URL;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +27,6 @@ const Index = () => {
       }
     };
 
-    // Add passive listener for better performance
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,6 +37,14 @@ const Index = () => {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleVimeoVideoButtonClick = () => {
+    window.open(
+      `https://vimeo.com/${vimeoVideoUrl}`,
+      "_blank",
+      "noopener,noreferrer"
+    );
+  };
+
   return (
     <div
       className={`min-h-screen bg-gradient-to-b from-amber-50 to-orange-200`}
@@ -44,10 +52,10 @@ const Index = () => {
     >
       <HeroSection onConsultButtonClick={handleConsultButtonClick} />
       <AboutSection />
-      <ProblemSolutionSection />
+      <VideoSection onVimeoVideoButtonClick={handleVimeoVideoButtonClick} />
       <BenefitsSection />
+      <ProblemSolutionSection />
       <RecommendationsSection />
-      <VideoSection />
       <LeadsFormSection defaultFormData={defaultFormData} />
       <FloatingWhatsAppButton whatsappOpacity={whatsappOpacity} />
       <FooterSection />

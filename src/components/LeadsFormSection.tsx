@@ -17,7 +17,7 @@ const LeadsFormSection = ({
     <section id="leads-form" className="py-8 sm:py-8 px-4">
       <div className="container mx-auto max-w-2xl">
         <FormHeader />
-        <Card className="p-6 sm:p-8 shadow-xl bg-white/95 border-2 border-amber-400 animate-scale-in mx-4">
+        <Card className="p-6 sm:p-8 shadow-xl bg-white/90 border border-slate-300 animate-scale-in mx-4">
           <FormSubmission
             formData={formData}
             setFormData={setFormData}
