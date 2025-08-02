@@ -76,13 +76,6 @@ $phone_number = htmlspecialchars(trim($input['phone_number']));
 $email = filter_var(trim($input['email']), FILTER_SANITIZE_EMAIL);
 $description = htmlspecialchars(trim($input['description']));
 
-// Validate email
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    http_response_code(400);
-    echo json_encode(['error' => 'Invalid email format']);
-    exit;
-}
-
 try {
     // Check if all database environment variables are configured
     $db_host = getEnvVar('DB_HOST');
