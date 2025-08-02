@@ -32,6 +32,17 @@ const FooterSection = () => {
   return (
     <footer id="footer" className="bg-amber-600 text-white py-6 sm:py-8 px-4">
       <div className="container mx-auto max-w-4xl text-center">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mb-6">
+          {socialMediaLinks.map((link) => (
+            <SocialMediaIcon
+              key={link.platform}
+              platform={link.platform}
+              url={link.url}
+              icon={link.icon}
+              bgColor={link.bgColor}
+            />
+          ))}
+        </div>
         <h3 className="text-xl sm:text-2xl font-bold mb-4">
           צמיחה מהספה - לירן אהרון
         </h3>
@@ -48,18 +59,6 @@ const FooterSection = () => {
             <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="text-sm sm:text-base">{footerEmail}</span>
           </div>
-        </div>
-
-        <div className="flex items-center justify-center gap-4 sm:gap-6">
-          {socialMediaLinks.map((link) => (
-            <SocialMediaIcon
-              key={link.platform}
-              platform={link.platform}
-              url={link.url}
-              icon={link.icon}
-              bgColor={link.bgColor}
-            />
-          ))}
         </div>
       </div>
     </footer>
