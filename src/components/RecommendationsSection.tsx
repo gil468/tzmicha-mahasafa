@@ -13,7 +13,7 @@ const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const RecommendationsSection = () => {
   return (
-    <section className="py-8 sm:py-8 px-4 backdrop-blur-sm">
+    <section className="py-4 sm:py-8 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-6xl">
         <h2
           className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} text-center mb-8 sm:mb-12 px-4`}

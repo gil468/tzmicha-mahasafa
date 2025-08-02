@@ -24,8 +24,20 @@ const HeroSection = ({ onConsultButtonClick }: HeroSectionProps) => {
         <h1
           className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-${mainTextColor} mb-3 sm:mb-4 leading-tight px-4`}
         >
-          צמיחה מהספה - תוכנית הליווי שתכניס שקט כלכלי הביתה
+          צמיחה מהספה
         </h1>
+
+        <p
+          className={`text-${mainTextColor} text-base sm:text-xl leading-relaxed mb-6`}
+        >
+          אתם מרוויחים טוב אבל עדיין הכסף נעלם?
+          <br />
+          לא מצליחים להגיע למטרות שלכם?
+          <br />
+          הילדים גדלים, הזמן רץ - הקמתם משפחה ואולי גם עסק קטן?
+          <br />
+          אז למה לא לקחת את המושכות לידיים ולבנות מציאות כלכלית רגועה ומאפשרת!
+        </p>
 
         <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-amber-600 mb-4 sm:mb-6 leading-tight px-4">
           5 מפגשים שיסדרו לכם את הכסף - בלי בלגן ועם תוצאות

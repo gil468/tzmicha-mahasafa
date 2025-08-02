@@ -1,10 +1,4 @@
-import { Button } from "./ui/button";
-
-interface VideoSectionProps {
-  onVimeoVideoButtonClick: () => void;
-}
-
-const VideoSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
+const VideoSection = () => {
   const youtubeVideoUrl = import.meta.env.VITE_YOUTUBE_VIDEO_URL;
   const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
@@ -30,20 +24,6 @@ const VideoSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
               loading="lazy"
             />
           </div>
-        </div>
-        <div className="text-center py-12 sm:py-12 animate-fade-in p-4">
-          <p className="text-xl sm:text-3xl text-orange-700 max-w-xl mx-auto">
-            השאירו פרטים וקבלו ישירות אליכם הדרכה חינמית קצרה שמדברת על פנסיה,
-            קרן השתלמות ומה שביניהם 👇🏻
-          </p>
-          <br />
-          <Button
-            size="lg"
-            className="bg-amber-500 hover:bg-amber-600 text-white px-6 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition  hover:scale-105"
-            onClick={onVimeoVideoButtonClick}
-          >
-            להדרכה החינמית
-          </Button>
         </div>
       </div>
     </section>

@@ -52,8 +52,8 @@ const Index = () => {
     >
       <HeroSection onConsultButtonClick={handleConsultButtonClick} />
       <AboutSection />
-      <VideoSection onVimeoVideoButtonClick={handleVimeoVideoButtonClick} />
-      <BenefitsSection />
+      <VideoSection />
+      <BenefitsSection onVimeoVideoButtonClick={handleVimeoVideoButtonClick} />
       <ProblemSolutionSection />
       <RecommendationsSection />
       <LeadsFormSection defaultFormData={defaultFormData} />

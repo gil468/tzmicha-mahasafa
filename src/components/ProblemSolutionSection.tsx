@@ -1,13 +1,13 @@
 const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 const problems = [
-  `משפחות שמרגישות שהן תמיד סביה ה-״פלוס מינוס״, למרות שהשכר טוב הלחץ קיים`,
+  `משפחות שמרגישות שהן תמיד סביב ה-״פלוס מינוס״, למרות שהשכר טוב הלחץ קיים`,
   `צעירים בתחילת הדרך שרוצים להתחיל נכון - צעירים ומרוויחים טוב? זה הזמן שלכם`,
   `כל מי שמבין שהגיע הזמן לקחת את המושכות לידיים ולייצר רווחה כלכלית, עכשיו ובעתיד`,
 ];
 
 const ProblemSolutionSection = () => {
   return (
-    <section className={"py-10 sm:py-12 px-4"}>
+    <section className={"py-4 sm:py-6 px-4"}>
       <div className="container mx-auto max-w-8xl flex justify-center">
         <div className="grid md:grid-cols-1 gap-8 sm:gap-12 items-center animate-fade-in">
           <div className="px-4">

@@ -63,7 +63,7 @@ const FormSubmission = ({
             </div>
           ),
           className: "bg-green-50 border-green-200 text-green-800 text-right",
-          duration: 5000,
+          duration: 3000,
         });
         setFormData(defaultFormData);
         setFormErrors({});
@@ -71,6 +71,7 @@ const FormSubmission = ({
         throw new Error("Network response was not ok");
       }
     } catch (error) {
+      console.log(error);
       toast({
         title: "שגיאה בשליחת הטופס",
         description: (
@@ -81,7 +82,7 @@ const FormSubmission = ({
         ),
         variant: "destructive",
         className: "text-right",
-        duration: 5000,
+        duration: 3000,
       });
     } finally {
       setIsSubmitting(false);

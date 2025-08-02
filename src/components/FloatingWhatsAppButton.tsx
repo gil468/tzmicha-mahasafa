@@ -7,7 +7,7 @@ const FloatingWhatsAppButton = ({
 }: FloatingWhatsAppButtonProps) => {
   const openWhatsApp = () => {
     const phoneNumber = import.meta.env.VITE_WHATSAPP_PHONE_NUMBER;
-    const message = "היי, בוא נדבר!";
+    const message = "היי, בואו נדבר!";
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
     )}`;

@@ -1,5 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import { Button } from "./ui/button";
+
+interface VideoSectionProps {
+  onVimeoVideoButtonClick: () => void;
+}
 
 const benefits = [
   "מיפוי מדויק של המצב הכלכלי שלכם",
@@ -12,14 +17,14 @@ const benefits = [
 
 const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
-const BenefitsSection = () => {
+const BenefitsSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
   return (
-    <section className="py-8 sm:py-8 px-4">
+    <section className="py-6 sm:py-4 px-4">
       <div className="container mx-auto max-w-4xl text-center">
         <h2
           className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-3 sm:mb-4 px-4`}
         >
-          איך זה עובד?
+          אז איך זה עובד?
         </h2>
         <p
           className={`text-lg sm:text-2xl text-${mainTextColor} mb-8 sm:mb-12 px-4`}
@@ -43,6 +48,20 @@ const BenefitsSection = () => {
               </CardContent>
             </Card>
           ))}
+        </div>
+        <div className="text-center py-6 sm:py-8 animate-fade-in p-4">
+          <p className="text-xl sm:text-3xl text-orange-700 max-w-xl mx-auto">
+            השאירו פרטים וקבלו ישירות אליכם הדרכה חינמית קצרה שמדברת על פנסיה,
+            קרן השתלמות ומה שביניהם 👇🏻
+          </p>
+          <br />
+          <Button
+            size="lg"
+            className="bg-amber-500 hover:bg-amber-600 text-white px-6 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition  hover:scale-105"
+            onClick={onVimeoVideoButtonClick}
+          >
+            להדרכה החינמית
+          </Button>
         </div>
       </div>
     </section>

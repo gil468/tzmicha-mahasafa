@@ -103,7 +103,7 @@ try {
     }
     
     // Send email notification using environment variables
-    $to = getEnvVar('NOTIFICATION_EMAIL', 'gil123991@gmail.com');
+    $to = getEnvVar('NOTIFICATION_EMAIL', 'liranah72@gmail.com');
     $subject_prefix = getEnvVar('EMAIL_SUBJECT_PREFIX', 'פנייה חדשה מהאתר צמיחה מהספה - ');
     $subject = $subject_prefix . $full_name;
     
@@ -128,17 +128,17 @@ try {
     
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= "From: " . getEnvVar('FROM_EMAIL', 'tzmicha-mehasafa@website.com') . "\r\n";
+    $headers .= "From: " . getEnvVar('FROM_EMAIL', 'tzmicha-mehasapa@website.com') . "\r\n";
     $headers .= "Reply-To: $email" . "\r\n";
     
     // Send email using PHP mail() function
     $email_sent = mail($to, $subject, $email_body, $headers);
     
     if ($email_sent) {
-        $message = $db_configured ? 'Form submitted and email sent successfully' : 'Form submitted (email only) successfully';
+        $message = $db_configured ? 'Form submitted, set user data on Database and email sent successfully' : 'Form submitted and email sent successfully';
         echo json_encode(['success' => true, 'message' => $message]);
     } else {
-        $message = $db_configured ? 'Form submitted successfully, but email sending failed' : 'Email sending failed';
+        $message = $db_configured ? 'Form submitted, but update user in Database and email sending failed' : 'Email sending failed';
         echo json_encode(['success' => $db_configured, 'message' => $message]);
     }
     

@@ -2,7 +2,7 @@ const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const FormHeader = () => {
   return (
-    <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+    <div className="text-center mb-4 sm:mb-6 animate-fade-in">
       <h2
         className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-3 sm:mb-4 px-4`}
       >

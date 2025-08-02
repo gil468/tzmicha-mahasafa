@@ -27,7 +27,7 @@ const AboutSection = () => {
             >
               התשוקה שלי להתפתחות כלכלית הייתה מאז שאני חייל, אבל בתכלס הכל
               התחיל לבעור לפני 5 שנים כאשר הוצאתי משפחה מחוב של 2.5 מיליון ש״ח
-              בהוצאה לפועל למצב יציב, כולל רכישת הדירה שלהם, והיום הם יציבים וגם
+              בהוצאה לפועל למצב יציב, כולל רכישת הדירה שלהם, והיום הם אפילו
               חוסכים.
               <br />
               מאז ובאופן טבעי לגמרי הצלחתי לעבוד עם אנשים ולשפר את עתידם הכלכלי
@@ -39,7 +39,7 @@ const AboutSection = () => {
             </p>
           </div>
 
-          <div className="flex flex-col items-center gap-6 px-4">
+          <div className="flex flex-col items-center gap-6 px-1">
             <img
               src="/assets/profile.png"
               alt="לירן אהרון - מאמן כלכלי"
@@ -49,7 +49,7 @@ const AboutSection = () => {
 
             <div className="bg-white/90 p-6 sm:p-8 rounded-2xl border border-slate-300">
               <h3 className="text-xl sm:text-2xl font-bold text-amber-600 mb-4 sm:mb-5">
-                תוכנית ליווי כלכלית שמתאימה בדיוק למשפחות וצעירים שרוצים
+                תוכנית ליווי כלכלית שמתאימה בדיוק למשפחות וצעירים שרוצים:
               </h3>
               <div className="flex items-start gap-3">
                 <Check className="w-5 h-5 sm:w-6 sm:h-6 text-amber-500 flex-shrink-0 mt-1" />
