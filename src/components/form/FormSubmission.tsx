@@ -59,7 +59,7 @@ const FormSubmission = ({
           description: (
             <div className="flex items-center gap-2 text-right">
               <CheckIcon className="w-5 h-5 text-green-600" />
-              <span>ניצור איתך קשר בקרוב לתיאום פגישת הייעוץ</span>
+              <span>ניצור איתך קשר בקרוב עם פרטים נוספים</span>
             </div>
           ),
           className: "bg-green-50 border-green-200 text-green-800 text-right",

@@ -7,7 +7,7 @@ const problems = [
 
 const ProblemSolutionSection = () => {
   return (
-    <section className={"py-4 sm:py-6 px-4"}>
+    <section className={"py-2 px-4"}>
       <div className="container mx-auto max-w-8xl flex justify-center">
         <div className="grid md:grid-cols-1 gap-8 sm:gap-12 items-center animate-fade-in">
           <div className="px-4">

@@ -14,12 +14,11 @@ const benefits = [
   "תכנון לעתיד בריא - בלי לוותר על ההווה",
   "כל זה מהבית שלכם - בלי נסיעות, בלי כאב ראש",
 ];
-
 const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const BenefitsSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
   return (
-    <section className="py-6 sm:py-4 px-4">
+    <section className="py-4 px-4">
       <div className="container mx-auto max-w-4xl text-center">
         <h2
           className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-3 sm:mb-4 px-4`}

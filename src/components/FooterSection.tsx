@@ -1,4 +1,5 @@
 import { Mail, Phone } from "lucide-react";
+import SocialMediaIcon from "./SocialMediaIcon";
 
 const FooterSection = () => {
   const footerPhoneNumber = import.meta.env.VITE_FOOTER_PHONE_NUMBER;
@@ -6,9 +7,30 @@ const FooterSection = () => {
   const facebookPageName = import.meta.env.VITE_FACEBOOK_PAGE_NAME;
   const instagramPageName = import.meta.env.VITE_INSTAGRAM_PAGE_NAME;
   const tiktokPageName = import.meta.env.VITE_TIKTOK_PAGE_NAME;
+  const socialMediaLinks = [
+    {
+      platform: "Facebook",
+      url: `https://facebook.com/${facebookPageName}`,
+      icon: "/assets/facebook-icon.png",
+      bgColor: "bg-blue-600 hover:bg-blue-700",
+    },
+    {
+      platform: "Instagram",
+      url: `https://instagram.com/${instagramPageName}`,
+      icon: "/assets/instagram-icon.png",
+      bgColor:
+        "bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700",
+    },
+    {
+      platform: "TikTok",
+      url: `https://tiktok.com/${tiktokPageName}`,
+      icon: "/assets/tiktok-icon.png",
+      bgColor: "bg-black hover:bg-gray-800",
+    },
+  ];
 
   return (
-    <footer id="footer" className="bg-amber-600 text-white py-8 sm:py-12 px-4">
+    <footer id="footer" className="bg-amber-600 text-white py-6 sm:py-8 px-4">
       <div className="container mx-auto max-w-4xl text-center">
         <h3 className="text-xl sm:text-2xl font-bold mb-4">
           צמיחה מהספה - לירן אהרון
@@ -29,48 +51,15 @@ const FooterSection = () => {
         </div>
 
         <div className="flex items-center justify-center gap-4 sm:gap-6">
-          <a
-            href={`https://facebook.com/${facebookPageName}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 hover:bg-blue-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
-            aria-label="Facebook"
-          >
-            <img
-              src="/assets/facebook-icon.png"
-              alt="Facebook"
-              className="w-5 h-5 sm:w-6 sm:h-6 filter brightness-0 invert"
-              loading="lazy"
+          {socialMediaLinks.map((link) => (
+            <SocialMediaIcon
+              key={link.platform}
+              platform={link.platform}
+              url={link.url}
+              icon={link.icon}
+              bgColor={link.bgColor}
             />
-          </a>
-          <a
-            href={`https://instagram.com/${instagramPageName}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
-            aria-label="Instagram"
-          >
-            <img
-              src="/assets/instagram-icon.png"
-              alt="Instagram"
-              className="w-5 h-5 sm:w-6 sm:h-6 filter brightness-0 invert"
-              loading="lazy"
-            />
-          </a>
-          <a
-            href={`https://tiktok.com/${tiktokPageName}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-10 h-10 sm:w-12 sm:h-12 bg-black hover:bg-gray-800 rounded-full flex items-center justify-center transition-all hover-scale shadow-lg"
-            aria-label="TikTok"
-          >
-            <img
-              src="/assets/tiktok-icon.png"
-              alt="TikTok"
-              className="w-5 h-5 sm:w-6 sm:h-6 filter brightness-0 invert"
-              loading="lazy"
-            />
-          </a>
+          ))}
         </div>
       </div>
     </footer>

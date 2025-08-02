@@ -4,7 +4,7 @@ const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const AboutSection = () => {
   return (
-    <section className="py-3 sm:py-1 px-4 backdrop-blur-sm">
+    <section className="py-2 sm:py-1 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-8 sm:mb-12">
           <h2

@@ -3,7 +3,7 @@ const VideoSection = () => {
   const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
   return (
-    <section className="py-8 sm:py-8 px-4 ">
+    <section className="py-8 px-4">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 animate-fade-in">
           <h2
