@@ -12,7 +12,7 @@ const recommendations = [
 
 const RecommendationsSection = () => {
   return (
-    <section className="py-6 sm:py-10 px-4 backdrop-blur-sm">
+    <section className="py-4 sm:py-10 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 text-center mb-8 sm:mb-12 px-4">
           לקוחות מספרים

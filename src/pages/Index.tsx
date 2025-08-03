@@ -33,7 +33,7 @@ const Index = () => {
 
   const handleConsultButtonClick = () => {
     document
-      .getElementById("leads-form")
+      .getElementById("leads-form-header")
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
