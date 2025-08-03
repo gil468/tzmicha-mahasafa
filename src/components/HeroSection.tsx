@@ -6,7 +6,7 @@ interface HeroSectionProps {
 
 const HeroSection = ({ onConsultButtonClick }: HeroSectionProps) => {
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 animate-float bg-gradient-to-b from-amber-50">
+    <section className="py-8 px-4 animate-float bg-gradient-to-b from-amber-50">
       <div className="container mx-auto max-w-6xl text-center">
         <div className="flex justify-center mb-6 sm:mb-8 animate-scale-in">
           <img

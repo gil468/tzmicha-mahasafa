@@ -11,9 +11,9 @@ const AboutSection = () => {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+        <div className="gap-8 items-center">
           <div className="px-4">
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-700 mb-4">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-700 mb-4 ">
               אני לירן אהרון - אבא, בעל, חובב גדול של טניס שולחן ומעריך ספורט,
               ולא פחות - מאמן להתפתחות כלכלית
             </h3>
