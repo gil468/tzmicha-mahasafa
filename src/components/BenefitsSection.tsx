@@ -3,7 +3,7 @@ import { CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 
 interface VideoSectionProps {
-  onVimeoVideoButtonClick: () => void;
+  onGuidanceVideoButtonClick: () => void;
 }
 
 const benefits = [
@@ -14,20 +14,17 @@ const benefits = [
   "תכנון לעתיד בריא - בלי לוותר על ההווה",
   "כל זה מהבית שלכם - בלי נסיעות, בלי כאב ראש",
 ];
-const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
-const BenefitsSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
+const BenefitsSection = ({
+  onGuidanceVideoButtonClick: onGuidanceVideoButtonClick,
+}: VideoSectionProps) => {
   return (
     <section className="py-4 px-4">
       <div className="container mx-auto max-w-4xl text-center">
-        <h2
-          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} mb-3 sm:mb-4 px-4`}
-        >
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 mb-3 sm:mb-4 px-4">
           אז איך זה עובד?
         </h2>
-        <p
-          className={`text-lg sm:text-2xl text-${mainTextColor} mb-8 sm:mb-12 px-4`}
-        >
+        <p className="text-lg sm:text-2xl text-gray-700 mb-8 sm:mb-12 px-4">
           ב-5 מפגשים פרקטיים, נעבוד יחד על:
         </p>
 
@@ -50,14 +47,14 @@ const BenefitsSection = ({ onVimeoVideoButtonClick }: VideoSectionProps) => {
         </div>
         <div className="text-center py-6 sm:py-8 animate-fade-in p-4">
           <p className="text-xl sm:text-3xl text-orange-700 max-w-xl mx-auto">
-            השאירו פרטים וקבלו ישירות אליכם הדרכה חינמית קצרה שמדברת על פנסיה,
-            קרן השתלמות ומה שביניהם 👇🏻
+            ועכשיו אם הגעתם עד לכאן קבלו ישירות אליכם הדרכה חינמית קצרה שמדברת
+            על פנסיה, קרן השתלמות ומה שביניהם 👇🏻
           </p>
           <br />
           <Button
             size="lg"
             className="bg-amber-500 hover:bg-amber-600 text-white px-6 sm:px-8 sm:py-4 text-base sm:text-lg rounded-full shadow-lg hover:shadow-xl transition  hover:scale-105"
-            onClick={onVimeoVideoButtonClick}
+            onClick={onGuidanceVideoButtonClick}
           >
             להדרכה החינמית
           </Button>

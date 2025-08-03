@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 interface HeroSectionProps {
   onConsultButtonClick: () => void;
 }
-const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const HeroSection = ({ onConsultButtonClick }: HeroSectionProps) => {
   return (
@@ -18,15 +17,11 @@ const HeroSection = ({ onConsultButtonClick }: HeroSectionProps) => {
           />
         </div>
 
-        <h1
-          className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-${mainTextColor} mb-3 sm:mb-4 leading-tight px-4`}
-        >
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-700 mb-3 sm:mb-4 leading-tight px-4">
           צמיחה מהספה
         </h1>
 
-        <p
-          className={`text-${mainTextColor} text-base sm:text-xl leading-relaxed mb-6`}
-        >
+        <p className="text-gray-700 text-base sm:text-xl leading-relaxed mb-6">
           אתם מרוויחים טוב אבל עדיין הכסף נעלם?
           <br />
           לא מצליחים להגיע למטרות שלכם?

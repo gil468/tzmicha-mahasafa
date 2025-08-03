@@ -9,16 +9,13 @@ const recommendations = [
     text: "לא האמנתי כמה זה טוב להתחיל לשנות הרגלים כלכליים. זה לא כאב - זה משחרר ואפילו רווחי",
   },
 ];
-const mainTextColor = import.meta.env.VITE_MAIN_TEXT_COLOR;
 
 const RecommendationsSection = () => {
   return (
     <section className="py-6 sm:py-10 px-4 backdrop-blur-sm">
       <div className="container mx-auto max-w-6xl">
-        <h2
-          className={`text-2xl sm:text-3xl md:text-4xl font-bold text-${mainTextColor} text-center mb-8 sm:mb-12 px-4`}
-        >
-          מה הלקוחות שלנו אומרים
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-700 text-center mb-8 sm:mb-12 px-4">
+          לקוחות מספרים
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">

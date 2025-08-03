@@ -1,8 +1,7 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 import SocialMediaIcon from "./SocialMediaIcon";
 
 const FooterSection = () => {
-  const footerPhoneNumber = import.meta.env.VITE_FOOTER_PHONE_NUMBER;
   const footerEmail = import.meta.env.VITE_FOOTER_EMAIL;
   const facebookPageName = import.meta.env.VITE_FACEBOOK_PAGE_NAME;
   const instagramPageName = import.meta.env.VITE_INSTAGRAM_PAGE_NAME;
@@ -51,10 +50,6 @@ const FooterSection = () => {
         </p>
 
         <div className="flex items-center justify-center gap-4 sm:gap-8 text-white mb-6 sm:mb-8 flex-wrap">
-          <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
-            <span className="text-sm sm:text-base">{footerPhoneNumber}</span>
-          </div>
           <div className="flex items-center gap-2">
             <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
             <span className="text-sm sm:text-base">{footerEmail}</span>
